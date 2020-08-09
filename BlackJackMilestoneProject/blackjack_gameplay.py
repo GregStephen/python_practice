@@ -7,9 +7,11 @@ import helpers
 
 game_on = True
 
+player_chips = Chips.Chips()
+
 while True:
   print("Welcome to Blackjack")
-
+  print("You have {} chips available".format(player_chips.total))
   deck = Deck.Deck()
   deck.shuffle()
 
@@ -20,8 +22,6 @@ while True:
   dealer_hand = Hand.Hand()
   dealer_hand.add_card(deck.deal_one())
   dealer_hand.add_card(deck.deal_one())
-
-  player_chips = Chips.Chips()
 
   helpers.take_bet(player_chips)
 
