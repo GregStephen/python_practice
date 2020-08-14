@@ -58,3 +58,35 @@ phone_pattern = re.compile(r'(\d{3})-(\d{3})-(\d{4})')
 
 results = re.search(phone_pattern, phonenumbertext)
 print(results.group(1))
+
+# or operator |
+re.search(r'cat|dog', 'The dog is here')
+
+# WILDCARD is a '.'
+re.findall(r'.at', 'The cat in the hat sat there')
+
+# Pattern Starts with ^
+re.findall(r'^\d', '2 is a number')
+
+#Pattern ends with '$'
+re.findall(r'\d$', 'ends with 4')
+
+phrase = 'there are 3 numbers 34 inside 5 this sentence'
+
+# square brackets with carrot excludes
+pattern = r'[^\d]+'
+
+re.findall(pattern,phrase)
+#returns a list with numbers excluded
+
+test_phrase = 'This is a string! But it has punctuation. How can we remove it?'
+
+clean = re.findall(r'[^!.? ]+', test_phrase)
+print(' '.join(clean))
+
+
+# braces with out the carrot can be used for grouping
+textt = 'Only find the hyphen-words in this sentence. but you do not know how long-ish they are'
+
+hyphenpattern = r'[\w]+-[\w]+'
+print(re.findall(hyphenpattern, textt))
